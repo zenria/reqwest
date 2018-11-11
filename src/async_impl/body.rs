@@ -86,6 +86,12 @@ impl Stream for Body {
     }
 }
 
+impl From<::hyper::Body> for Body {
+    fn from(body: ::hyper::Body) -> Self {
+        Body::wrap(body)
+    }
+}
+
 impl From<Bytes> for Body {
     #[inline]
     fn from(bytes: Bytes) -> Body {
