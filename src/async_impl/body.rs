@@ -164,6 +164,12 @@ impl AsRef<[u8]> for Chunk {
     }
 }
 
+impl Into<::hyper::Chunk> for Chunk {
+    fn into(self) -> ::hyper::Chunk {
+        self.inner
+    }
+}
+
 impl ::std::ops::Deref for Chunk {
     type Target = [u8];
     #[inline]
